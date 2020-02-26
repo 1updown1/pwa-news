@@ -2,14 +2,19 @@ import React from 'react';
 import Style from './navbar.module.css';
 
 
-export default function NavbarList(props) {
+export default function NavbarList({ list, select, changeSelect}) {
 	return (
 		<nav className={Style.wrapper}>
 			<ul className={Style.navWrapper}>
 				{
-					props.list.map(item => {
+					list.map(item => {
 						return (
-							<li className={`${Style.navItem} ${Style.highlight}`} key={item.id}>{item.text}</li>
+							<li 
+								className={`${Style.navItem} ${select ===  item.id ? Style.highlight : ''}`} 
+								key={item.id}
+								onClick={() => { changeSelect(item) }}>
+									{item.text}
+							</li>
 						)
 					})
 				}
