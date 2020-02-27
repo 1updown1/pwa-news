@@ -1,8 +1,14 @@
-import React from 'react';
-import Navbar from '../../components/Navbar/navbar';
+import React, { useState } from 'react';
+import Placeholder from '../../components/Placeholder/index';
 
 export default function NewsList() {
+	const [newsList, setNewsList] = useState([]);
 	return (
-		<Navbar></Navbar>
+		<div>
+			<Placeholder></Placeholder>
+			<Placeholder></Placeholder>
+			<Placeholder></Placeholder>
+			<Placeholder></Placeholder>
+		</div>
 	)
 }

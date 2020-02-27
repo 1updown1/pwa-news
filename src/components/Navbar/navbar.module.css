@@ -1,5 +1,5 @@
 .wrapper{
-	height: 2.3rem;
+	height: var(--nav-bar-height);
 	border-bottom: 1px solid #f8f8f8;
 	background: #fff;
 	-webkit-overflow-scrolling:touch;
