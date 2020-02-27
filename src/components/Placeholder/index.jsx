@@ -1,7 +1,5 @@
 import React from 'react';
 import Style from './index.module.css';
-console.log(Style);
-
 
 export default function Placeholder() {
 	return (
