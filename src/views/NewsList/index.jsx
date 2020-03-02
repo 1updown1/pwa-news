@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Placeholder from '../../components/Placeholder/index';
+import NewsItem from './newsItem';
 
 export default function NewsList() {
 	const [newsList, setNewsList] = useState([]);
@@ -19,7 +20,7 @@ export default function NewsList() {
 		const mockList = [
 			{
 				id: 1,
-				title: '标题标题标题标题标题标题标题标题标题',
+				title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
 				posterImageUrl: ''
 			},
 			{
@@ -33,19 +34,21 @@ export default function NewsList() {
 		}, 1000);
 	}, []);
 
+	const renderList = [];
+
 	if (newsList.length) {
-		return (
-			<div>newsList</div>
-		)
+		newsList.forEach(item => {
+			renderList.push(<NewsItem key={item.id} {...item}/>);
+		})
 	}else{
-		const placeholderList = [];
 		for (let i = 0; i < placeholderNum; i++) {
-			placeholderList.push(<Placeholder key={i} />)
+			renderList.push(<Placeholder key={i} />)
 		}
-		return (
-			<div>
-				{ placeholderList }
-			</div>
-		)
 	}
+
+	return (
+		<div>
+			{renderList}
+		</div>
+	)
 }
