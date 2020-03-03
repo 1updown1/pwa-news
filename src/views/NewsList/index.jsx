@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import Placeholder from '../../components/Placeholder/index';
 import NewsItem from './newsItem';
 
 export default function NewsList() {
 	const [newsList, setNewsList] = useState([]);
 	const [placeholderNum, setPlaceholderNum] = useState(4);
+	const history = useHistory();
 
 	useEffect(() => {
 		const unit = parseFloat(document.documentElement.style.fontSize);
@@ -34,11 +36,15 @@ export default function NewsList() {
 		}, 1000);
 	}, []);
 
+	const goNewsDetail = function (id) {
+		history.push(`/detail/${id}`);
+	}
+
 	const renderList = [];
 
 	if (newsList.length) {
 		newsList.forEach(item => {
-			renderList.push(<NewsItem key={item.id} {...item}/>);
+			renderList.push(<NewsItem key={item.id} {...item} clickHandler={goNewsDetail}/>);
 		})
 	}else{
 		for (let i = 0; i < placeholderNum; i++) {
@@ -47,7 +53,7 @@ export default function NewsList() {
 	}
 
 	return (
-		<div>
+		<div style={{'paddingTop': 'var(--nav-bar-height)'}}>
 			{renderList}
 		</div>
 	)

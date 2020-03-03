@@ -3,8 +3,7 @@ html, body, ul, ol, li, a{
 	padding: 0;
 }
 body{
-	background: #f8f8f8;
-	padding-top: var(--nav-bar-height);
+	background: var(--main-bg);
 }
 ul, li, ol{
 	list-style: none;
@@ -17,9 +16,11 @@ ul, li, ol{
 }
 
 :root{
+	--main-bg: #f8f8f8;
 	--nav-bar-height: 2.3rem;
 	--news-item-padding-top: 1rem;
 	--news-item-padding-left: 0.8rem;
 	--news-item-height: 4rem;
 	--news-item-poster-width: 40%;
+	--goback-nav-bar-height: 2rem;
 }

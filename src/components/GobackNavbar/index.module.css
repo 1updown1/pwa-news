@@ -1,0 +1,18 @@
+.wrapper{
+	width: 100%;
+	height: var(--goback-nav-bar-height);
+	position: fixed;
+	top: 0;
+	left: 0;
+	/* background: var(--main-bg); */
+	background: skyblue;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.back{
+	width: 2rem;
+	height: 2rem;
+	background: url('../../img/goback.svg') 0 0/100% 100% no-repeat;
+	color: black;
+}
