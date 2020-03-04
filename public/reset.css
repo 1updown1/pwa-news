@@ -24,3 +24,12 @@ ul, li, ol{
 	--news-item-poster-width: 40%;
 	--goback-nav-bar-height: 2rem;
 }
+
+.icon{
+	font-family: 'Icons';
+}
+
+@font-face {
+	font-family: 'Icons';
+	src: url('/element-icons.woff');
+}
