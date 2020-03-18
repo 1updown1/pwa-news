@@ -1,0 +1,17 @@
+.news-title{
+	font-size: 1rem;
+	font-weight: bold;
+	color: var(--news-title-text-color);
+}
+.news-sub-title{
+	margin: 1.3rem 0;
+	font-size: 0.6rem;
+	color: var(--news-sub-title-text-color);
+}
+.news-content-wrapper{
+	font-size: 0.8rem;
+	color: var(--news-main-title-text-color)
+}
+.news-content-wrapper .news-paragraph + .news-paragraph{
+	margin-top: 1rem;
+}

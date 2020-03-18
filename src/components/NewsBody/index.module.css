@@ -1,0 +1,7 @@
+.wrapper{
+	margin: 0 0.5rem;
+	padding: 0.5rem 0;
+	--news-title-text-color: #1a1a1a;
+	--news-sub-title-text-color: #7f7f7f;
+	--news-main-text-color: #3a3a3a;
+}

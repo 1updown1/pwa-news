@@ -1,4 +1,14 @@
-html, body, ul, ol, li, a{
+:root{
+	--main-bg: #f8f8f8;
+	--nav-bar-height: 2.3rem;
+	--news-item-padding-top: 1rem;
+	--news-item-padding-left: 0.8rem;
+	--news-item-height: 4rem;
+	--news-item-poster-width: 40%;
+	--goback-nav-bar-height: 2rem;
+}
+
+html, body, ul, ol, li, a, p{
 	margin: 0;
 	padding: 0;
 }
@@ -15,15 +25,6 @@ ul, li, ol{
 	align-items: center;
 }
 
-:root{
-	--main-bg: #f8f8f8;
-	--nav-bar-height: 2.3rem;
-	--news-item-padding-top: 1rem;
-	--news-item-padding-left: 0.8rem;
-	--news-item-height: 4rem;
-	--news-item-poster-width: 40%;
-	--goback-nav-bar-height: 2rem;
-}
 
 .icon{
 	font-family: 'Icons';

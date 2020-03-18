@@ -7,8 +7,15 @@ instance.interceptors.request.use(config => {
     return config;
 })
 
-instance.interceptors.response.use(res => {
-    return res;
+instance.interceptors.response.use(({status, data}) => {
+	console.log(status);
+	if(status != 200){
+		return Promise.reject('http error');
+	}
+	if(data.code != 200){
+		return Promise.reject(data.resMsg);
+	}
+    return data.res;
 }, async err => {
     const { config } = err;
     if (config.errorRetryTimes && config.errorRetryTimes > 0) {

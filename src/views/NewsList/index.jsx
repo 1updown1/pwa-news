@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import Placeholder from '../../components/Placeholder/index';
 import NewsItem from './newsItem';
+import { instance as axios } from '../../request';
 
 export default function NewsList() {
 	const [newsList, setNewsList] = useState([]);
@@ -19,21 +20,10 @@ export default function NewsList() {
 	}, []);
 
 	useEffect(() => {
-		const mockList = [
-			{
-				id: 1,
-				title: '标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题标题',
-				posterImageUrl: ''
-			},
-			{
-				id: 2,
-				title: '标题标题标题标题标题标题标题标题标题',
-				posterImageUrl: ''
-			}
-		]
-		setTimeout(() => {
-			setNewsList(mockList);
-		}, 1000);
+		axios.get('/newsList').then(res => {
+			console.log(res);
+			setNewsList(res);
+		})
 	}, []);
 
 	const goNewsDetail = function (id) {
