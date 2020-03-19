@@ -12,6 +12,10 @@
 	font-size: 0.8rem;
 	color: var(--news-main-title-text-color)
 }
+.news-content-wrapper .news-paragraph{
+	text-indent: 2em;
+	line-height: 1.5rem;
+}
 .news-content-wrapper .news-paragraph + .news-paragraph{
 	margin-top: 1rem;
 }
