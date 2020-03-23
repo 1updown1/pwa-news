@@ -14,7 +14,8 @@ Mock.setup({
 
 Mock.mock(/\/test/, 'get', {test: 'test'})
 
-Mock.mock(/\/newsList/, 'get', () => {
+Mock.mock(/\/newsList/, 'get', req => {
+	console.log(`request: ${req.url}`);
 	const ret = [];
 	for (let index = 0; index < 10; index++) {
 		ret.push({

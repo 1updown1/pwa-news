@@ -8,11 +8,10 @@ instance.interceptors.request.use(config => {
 })
 
 instance.interceptors.response.use(({status, data}) => {
-	console.log(status);
-	if(status != 200){
+	if(status !== 200){
 		return Promise.reject('http error');
 	}
-	if(data.code != 200){
+	if(data.code !== 200){
 		return Promise.reject(data.resMsg);
 	}
     return data.res;
