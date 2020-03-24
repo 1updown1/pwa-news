@@ -58,7 +58,8 @@ export default function NewsList() {
 	return (
 		<div style={{'paddingTop': 'var(--nav-bar-height)'}}>
 			{renderList}
-			{ !!newsList.length && loadingNewsList && (<Loading key="loadin"></Loading>) }
+			{/* { !!newsList.length && loadingNewsList && (<Loading key="loading"></Loading>) } */}
+			<Loading key="loading"></Loading>
 		</div>
 	)
 }

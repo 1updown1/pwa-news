@@ -1,0 +1,28 @@
+.loadingWrapper{
+	height: var(--news-item-height);
+	position: relative;
+	background: paint(loading);
+}
+.circleWrapper{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width: 2rem;
+	height: 2rem;
+	border-radius: 50%;
+	border: 1px solid #a8a8a8;
+}
+.loadingBar{
+	position: absolute;
+	width: 0.1rem;
+	height: 0.8rem;
+	background: #a8a8a8;
+	top: -0.2rem;
+	left: 50%;
+}
+.loadingBar{
+
+}
