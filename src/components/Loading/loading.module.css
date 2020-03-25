@@ -1,7 +1,6 @@
 .loadingWrapper{
 	height: var(--news-item-height);
 	position: relative;
-	background: paint(loading);
 }
 .circleWrapper{
 	position: absolute;
@@ -13,16 +12,94 @@
 	width: 2rem;
 	height: 2rem;
 	border-radius: 50%;
-	border: 1px solid #a8a8a8;
+	transform-origin: center;
+	animation: rotate 0.8s steps(1) infinite;
 }
 .loadingBar{
 	position: absolute;
 	width: 0.1rem;
-	height: 0.8rem;
+	height: 0.5rem;
 	background: #a8a8a8;
-	top: -0.2rem;
+	bottom: 50%;
 	left: 50%;
+	margin-left: -0.05rem;
+	transform-origin: center bottom;
 }
-.loadingBar{
-
+.loadingBar:nth-child(1){
+	transform: translate(0, -0.5rem);
+	background: #d1d1d1;
+}
+.loadingBar:nth-child(2){
+	transform: rotate(30deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(3){
+	transform: rotate(60deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(4){
+	transform: rotate(90deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(5){
+	transform: rotate(120deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(6){
+	transform: rotate(150deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(7){
+	transform: rotate(180deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(8){
+	transform: rotate(210deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(9){
+	transform: rotate(240deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(10){
+	transform: rotate(270deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(11){
+	transform: rotate(300deg) translate(0, -0.5rem);
+}
+.loadingBar:nth-child(12){
+	transform: rotate(330deg) translate(0, -0.5rem);
+}
+@keyframes rotate{
+	0% {
+		transform: rotate(0);
+	}
+	8% {
+		transform: rotate(30deg);
+	}
+	16% {
+		transform: rotate(60deg);
+	}
+	24% {
+		transform: rotate(90deg);
+	}
+	32% {
+		transform: rotate(120deg);
+	}
+	40% {
+		transform: rotate(150deg);
+	}
+	48% {
+		transform: rotate(180deg);
+	}
+	56% {
+		transform: rotate(210deg);
+	}
+	64% {
+		transform: rotate(240deg);
+	}
+	72% {
+		transform: rotate(270deg);
+	}
+	80% {
+		transform: rotate(300deg);
+	}
+	88% {
+		transform: rotate(330deg);
+	}
+	96% {
+		transform: rotate(360deg);
+	}
 }
