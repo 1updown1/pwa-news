@@ -2,7 +2,7 @@ import React from 'react';
 import Style from './newsItem.module.css';
 import img from '../../img/poster.webp';
 
-export default function NewsItem({ title, clickHandler, id, posterImageUrl, num}) {
+export default function NewsItem({ title, clickHandler, id, posterImageUrl, num, pushDomRef}) {
 	const newsClick = function () {
 		clickHandler(id)
 	}
@@ -17,7 +17,7 @@ export default function NewsItem({ title, clickHandler, id, posterImageUrl, num}
 			</section>
 
 			<section className={Style.posterArea}>
-				<img src={posterImageUrl} className={Style.poster} alt=""/>
+				<img data-src={posterImageUrl} src={img} className={Style.poster} alt="" ref={pushDomRef}/>
 			</section>
 		</section>
 	)

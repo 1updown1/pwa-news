@@ -10,11 +10,11 @@ export default function useScrollLoadMore(cb, loadMorePixle) {
 				cb();
 			}
 		}
-		document.addEventListener('scroll', fn, {
+		window.addEventListener('scroll', fn, {
 			passive: true
 		})
 		return () => {
-			document.removeEventListener('scroll', fn);
+			window.removeEventListener('scroll', fn);
 		};
 	}, [cb, loadMorePixle]);
 
