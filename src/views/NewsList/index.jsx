@@ -14,16 +14,23 @@ export default function NewsList() {
 	const [placeholderNum, setPlaceholderNum] = useState(4);
 	const [loadingNewsList, setLoadingNewsList] = useState(false);
 	const [newsBoxHeight, setNewsBoxHeight] = useState(0);
+	const [currentPage, setCurrentPage] = useState(1);
+	const [isLoadAllData, setIsLoadAllData] = useState(false);
 	const history = useHistory();
 
 	const cb = useCallback(async () => {
-		if (loadingNewsList) return;
+		if (loadingNewsList || isLoadAllData) return;
 		setLoadingNewsList(true);
-		const [err, res] = await wrapperAwait(axios.get('/newsList'));
+		const [err, res] = await wrapperAwait(axios.get('/newsList', { params: {page: currentPage} }));
+		setCurrentPage(prePage => prePage + 1);
 		setLoadingNewsList(false);
 		if (err) return;
-		setNewsList(pre => [...pre, ...res]);
-	}, [loadingNewsList]);
+		if(res.length){
+			setNewsList(pre => [...pre, ...res]);
+		}else{
+			setIsLoadAllData(true);
+		}
+	}, [loadingNewsList, currentPage, isLoadAllData]);
 
 	useScrollLoadMore(cb, newsBoxHeight * remainNewsNumToLoad);
 

@@ -17,7 +17,7 @@ Mock.mock(/\/test/, 'get', {test: 'test'})
 Mock.mock(/\/newsList/, 'get', req => {
 	console.log(`request: ${req.url}`);
 	const ret = [];
-	for (let index = 0; index < 10; index++) {
+	for (let index = 0; index < 20; index++) {
 		ret.push({
 			id: Mock.Random.id(),
 			title: Mock.Random.ctitle(),
