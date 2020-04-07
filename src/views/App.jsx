@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import NewsList from './NewsList/index';
-import NewsDetail from './NewsDetail/index';
+import NewsList from './NewsList/NewsList';
+import NewsDetail from './NewsDetail/NewsDetail';
 import Navbar from '../components/Navbar/navbar';
 
 function App() {

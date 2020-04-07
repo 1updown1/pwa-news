@@ -1,25 +1,42 @@
-import { useEffect } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { throttle } from '../utils';
 
-export default function useLazyLoad(doms) {
-	useEffect(() => {
-		const fn = throttle(function (e) {
-			if (!doms) return;
-			for (let i = doms.length - 1; i >= 0; i--) {
-				const imgDom = doms[i];
-				if (imgDom.getAttribute('data-load')) break;
-				const { top } = imgDom.getBoundingClientRect();
-				if (top < document.scrollingElement.clientHeight * 2) {
-					imgDom.setAttribute('data-load', 'loaded');
-					imgDom.src = imgDom.getAttribute('data-src');
-				}
+export default function useLazyLoad() {
+	const domsArr = useRef(null);
+
+	const pushImgDom = useCallback(dom => {
+		if(!dom) return;
+		domsArr.current.push(dom);
+		judgeLoadImg();
+	}, []);
+
+	const judgeLoadImg = useCallback(throttle(function (e) {
+		if (!domsArr.current || !domsArr.current.length) return;
+		for (let i = domsArr.current.length - 1; i >= 0; i--) {
+			const imgDom = domsArr.current[i];
+			if (imgDom.getAttribute('data-load')) break;
+			const { top } = imgDom.getBoundingClientRect();
+			if (top < document.scrollingElement.clientHeight * 2) {
+				imgDom.setAttribute('data-load', 'loaded');
+				imgDom.src = imgDom.getAttribute('data-src');
 			}
-		}, 1000);
-		window.addEventListener('scroll', fn, {
+		}
+	}, 100), []);
+	
+	useEffect(() => {
+		domsArr.current = [];
+	}, []);
+
+	useEffect(() => {
+		console.log('rebind');
+		window.addEventListener('scroll', judgeLoadImg, {
 			passive: true,
 		})
 		return () => {
-			window.removeEventListener('scroll', fn);
+			domsArr.current = [];
+			window.removeEventListener('scroll', judgeLoadImg);
 		};
-	}, [doms]);
+	}, [judgeLoadImg]);
+
+	return pushImgDom;
 }

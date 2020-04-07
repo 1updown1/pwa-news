@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useHistory } from "react-router-dom";
 import Placeholder from '../../components/Placeholder/index';
-import NewsItem from './newsItem';
+import NewsItem from './NewsItem';
 import { instance as axios } from '../../request';
 import useScrollLoadMore from '../../hooks/scrollLoadMore';
 import useLazyLoad from '../../hooks/lazyLoadImage';
@@ -22,7 +22,7 @@ export default function NewsList() {
 		if (loadingNewsList || isLoadAllData) return;
 		setLoadingNewsList(true);
 		const [err, res] = await wrapperAwait(axios.get('/newsList', { params: {page: currentPage} }));
-		setCurrentPage(prePage => prePage + 1);
+		setCurrentPage(prePage => ++prePage);
 		setLoadingNewsList(false);
 		if (err) return;
 		if(res.length){
@@ -53,11 +53,7 @@ export default function NewsList() {
 	}, []);
 
 
-	const pushDomRef = useCallback(node => {
-		imgDoms.current.push(node);
-	}, []);
-
-	useLazyLoad(imgDoms.current);
+	const pushImgDom = useLazyLoad();
 
 	
 	const goNewsDetail = function (id) {
@@ -68,7 +64,7 @@ export default function NewsList() {
 
 	if (newsList.length) {
 		newsList.forEach(item => {
-			renderList.push(<NewsItem key={item.id} {...item} clickHandler={goNewsDetail} pushDomRef={pushDomRef}/>);
+			renderList.push(<NewsItem key={item.id} {...item} clickHandler={goNewsDetail} pushDomRef={pushImgDom}/>);
 		})
 	}else{
 		for (let i = 0; i < placeholderNum; i++) {
