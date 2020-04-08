@@ -4,12 +4,6 @@ import { throttle } from '../utils';
 export default function useLazyLoad() {
 	const domsArr = useRef(null);
 
-	const pushImgDom = useCallback(dom => {
-		if(!dom) return;
-		domsArr.current.push(dom);
-		judgeLoadImg();
-	}, []);
-
 	const judgeLoadImg = useCallback(throttle(function (e) {
 		if (!domsArr.current || !domsArr.current.length) return;
 		for (let i = domsArr.current.length - 1; i >= 0; i--) {
@@ -22,6 +16,12 @@ export default function useLazyLoad() {
 			}
 		}
 	}, 100), []);
+
+	const pushImgDom = useCallback(dom => {
+		if (!dom) return;
+		domsArr.current.push(dom);
+		judgeLoadImg();
+	}, [judgeLoadImg]);
 	
 	useEffect(() => {
 		domsArr.current = [];
