@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import Style from './NewsItem.module.css';
-import img from '../../img/poster.webp';
+import img from '../../img/placeholder.png';
 
 export default function NewsItem({ title, clickHandler, id, posterImageUrl, num, pushDomRef}) {
 	const newsClick = function () {
